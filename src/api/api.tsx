@@ -8,10 +8,16 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-export const getDataNeo = async () => {
+export const getDataNeo = async (day: number) => {
+  const today = new Date();
+  const startDate = new Date(today.getFullYear(), today.getMonth(), day);
+  const endDate = new Date(today.getFullYear(), today.getMonth(), day);
+
   try {
     const response = await api.get('/feed', {
       params: {
+        start_date: startDate,
+        end_date: endDate,
         api_key: API_KEY,
       },
     });
