@@ -1,37 +1,34 @@
-# Vite + React + Typescript + Eslint + Prettier
+#  Interview task
+ 
+### Requirements:
+- use React, React hooks, [vite](https://vitejs.dev/guide/), obligatory
+- use best practices to structure the application, consider that it will be extended with additional features in the future
+- use any React UI Component Library, obligatory
+- provide means for configuration for different environments (DEV/PROD), if have experience!
+-- hint: use env variable
+- cover partially with unit tests (in order to demonstrate the approaches, if have experience)
+- use github as version control system, obligatory
+- split your job into several parts and do about **5-10** logical commits (do it every 1-2 hours)
 
-A starter for React with Typescript with the fast Vite and all static code testing with Eslint and formatting with Prettier.
+### Initial data
+- use `api.nasa.gov`
+- get the API-KEY=`PXjG2k4gTiQT1uLnemaLCDAX3RDa7jRbL69WIROx`, if expired - please register
+- documentation: https://api.nasa.gov - Browse APIs - Asteroids NeoWs
+ 
+ 
+### Task:
+Create a single page React application with information about near orbital objects (NEO), organized in list with a maximum of 6 elements. New element should be added every 5 seconds and contain aggregated data about a single day. The oldest element should be removed on new element if list is full. You should start fetching data from 1st day of the month till today. When reach today, start from the 1st day again.
+ 
+Every element should contain the following data:
+- max estimated diameter of NEO in kilometers for the day (check estimated_diameter_max property)
+- number of potentially hazardous NEOs per day (check is_potentially_hazardous_asteroid property)
+- closest NEO (miss_distance in km)
+- fastest NEO (relative_velocity in kph)
+ 
+Elements with the 2 highest numbers of hazard objects should have red background and updated with each new element added.
 
-![Vite + React + Typescript + Eslint + Prettier](/resources/screenshot.png)
+### Submit your work
+- send link to the git repo
+- send link to github pages (to see live demo)
 
-I found out about Vite and I wanted to have a boilerplate for the technologies that I use. You can find more about these in the following links: [Vite](https://github.com/vitejs/vite), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Eslint](https://eslint.org/), [Prettier](https://prettier.io/).
-
-## Installation
-
-Clone the repo and run `yarn install`
-
-or Run command
-
-```
-npx degit TheSwordBreaker/vite-reactts-eslint-prettier project-name
-```
-
-## Start
-
-After the successfull installation of the packages: `yarn dev`
-
-## Steps in Vscode
-
-#### (works with better with this template)
-
-1. Install Eslint and prettier extension for vs code.
-2. Make Sure Both are enabled
-3. Make sure all packages are Installed. (Mostly Eslint and prettier in node_modules)
-4. Enable formatOnSave of vs code
-5. Open a .tsx file and check if the bottom right corners of vs code have Eslint and Prettier with a double tick
-
-![Screenshot (253)_LI](https://user-images.githubusercontent.com/52120562/162486286-7383a737-d555-4f9b-a4dd-c4a81deb7b96.jpg)
-
-If Everything is Good Then It Should Work, but let me new if something else happens
-
-Made with ❤️ by theSwordBreaker(we Destory all types of sword ⚡)
+**PS:** Estimated time 4-6 hours(could be less or more depended on code quality)
