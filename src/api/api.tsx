@@ -34,7 +34,7 @@ export const getDataNeo = async (day: number) => {
     const closest: number[] = [];
     const velocity: number[] = [];
 
-    response.data.near_earth_objects[startDate].map((el) => {
+    response.data.near_earth_objects[startDate].map((el: any) => {
       maxDiameters.push(el.estimated_diameter.kilometers.estimated_diameter_max);
       closest.push(+el.close_approach_data[0].miss_distance.kilometers);
       velocity.push(+el.close_approach_data[0].relative_velocity.miles_per_hour);
