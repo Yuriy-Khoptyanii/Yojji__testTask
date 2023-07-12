@@ -1,24 +1,32 @@
 import './NeoCard.scss';
 
 import { Card, CardContent, Typography } from '@mui/material';
+import { FC } from 'react';
 
-export const NeoCard = ({
-  maxDiameter = 0,
-  hazardousCount = 0,
-  closestNeo = 0,
-  fastestNeo = 0,
-}) => {
+import { Neo } from '../../types/allTypes';
+
+type Props = {
+  neo: Neo;
+  mostHazardousNeo: Neo[];
+};
+
+export const NeoCard: FC<Props> = ({ neo, mostHazardousNeo }) => {
+  const { maxDiameter, hazardous, closest, velocity } = neo;
+
+  const cardStyle = {
+    backgroundColor: mostHazardousNeo.includes(neo) ? 'red' : '',
+    width: '280px',
+  };
+
   return (
-    <Card className="neoCard">
+    <Card style={cardStyle}>
       <CardContent>
         <Typography variant="h5">NEO Information</Typography>
         <div className="neoCard__data">
           <Typography variant="body1">Max Diameter: {maxDiameter} km</Typography>
-          <Typography variant="body1">
-            Potentially Hazardous NEOs: {hazardousCount}
-          </Typography>
-          <Typography variant="body1">Closest NEO: {closestNeo} km</Typography>
-          <Typography variant="body1">Fastest NEO: {fastestNeo} kph</Typography>
+          <Typography variant="body1">Potentially Hazardous NEOs: {hazardous}</Typography>
+          <Typography variant="body1">Closest NEO: {closest} km</Typography>
+          <Typography variant="body1">Fastest NEO: {velocity} kph</Typography>
         </div>
       </CardContent>
     </Card>

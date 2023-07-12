@@ -3,13 +3,14 @@ import './NeoList.scss';
 import { useEffect, useState } from 'react';
 
 import { getDataNeo } from '../../api/api';
+import { Neo } from '../../types/allTypes';
 import { NeoCard } from '../NeoCard/NeoCard';
 
 const today = new Date();
 const todayDay = today.getDate();
 
 export const NeoList = () => {
-  const [neoList, setNeoList] = useState([]);
+  const [neoList, setNeoList] = useState<Neo[]>([]);
   const [currentDay, setCurrentDay] = useState(1);
 
   const getDataNeoFromServer = async () => {
@@ -49,12 +50,22 @@ export const NeoList = () => {
     };
   }, [currentDay]);
 
-  console.log({ neoList });
+  const getMostHazardousNeo = () => {
+    const copyList = [...neoList];
+    return copyList.sort((a, b) => b.hazardous - a.hazardous).slice(0, 2);
+  };
+
+  const mostHazardousNeo = getMostHazardousNeo();
+
   return (
     <div className="neoList">
       <h1 className="neoList__title">near orbital objects (NEO)</h1>
-      <div className="neoList__Card">
-        <NeoCard />
+      <div className="neoList__card">
+        {neoList.map((neo) => (
+          <div key={neo.closest}>
+            <NeoCard neo={neo} mostHazardousNeo={mostHazardousNeo} />
+          </div>
+        ))}
       </div>
     </div>
   );

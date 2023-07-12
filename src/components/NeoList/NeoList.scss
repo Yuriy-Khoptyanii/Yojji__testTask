@@ -3,6 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 60px;
   flex-direction: column;
+
+  &__card {
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
 }
